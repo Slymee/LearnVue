@@ -1,9 +1,9 @@
 <template>
     <div class="mb-4">
-        <label :for="name" class="block text-sm font-medium text-gray-700 mb-1">{{ label }}</label>
+        <label :for="name" class="block text-sm font-medium text-[#725AC1] mb-1">{{ label }}</label>
         <input :type="type" :name="name" :value="modelValue" @input="updateValue($event.target.value)"
             :placeholder="placeholder"
-            class="block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200" />
+            class="block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#725AC1] focus:border-[#725AC1] transition duration-200" />
     </div>
 </template>
 
