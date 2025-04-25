@@ -7,12 +7,16 @@
 
             <div class="w-full md:w-1/2 p-8">
                 <h2 class="font-bold text-[#725AC1] text-2xl mb-6 text-center">Login Account</h2>
-                <form action="">
-                    <InputField label="Username" name="username" v-model="username" placeholder="Enter Username" />
+                <form @submit.prevent="handleSubmit">
+                    <InputField label="Username" name="username" v-model="username" placeholder="Enter Username" :error="usernameError"/>
                     <InputField label="Password" type="password" name="password" v-model="password"
-                        placeholder="Enter Password" />
+                        placeholder="Enter Password" :error="passwordError"/>
 
-                    <ButtonComponent text="Login" color="#3358ff" />
+                    <ButtonComponent text="Login" color="#3358ff" 
+                    @click="handleSubmit"
+                    />
+
+                    <div v-if="formError" class="text-red-500 text-center mt-4">{{ formError }}</div>
                 </form>
             </div>
         </div>
@@ -32,12 +36,34 @@ export default {
         return {
             username: '',
             password: '',
+            usernameError: '',
+            passwordError: '',
+            formError: '',
         };
     },
     methods: {
         handleSubmit() {
-            console.log('Email:', this.username);
-            console.log('Password:', this.password);
+            // Reset errors
+            this.usernameError = '';
+            this.passwordError = '';
+            this.formError = '';
+
+            // Validate inputs
+            if (!this.username) {
+                this.usernameError = 'Username is required.';
+            }
+            if (!this.password) {
+                this.passwordError = 'Password is required.';
+            }
+
+            // If there are no errors, proceed with form submission
+            if (!this.usernameError && !this.passwordError) {
+                console.log('Username:', this.username);
+                console.log('Password:', this.password);
+                // Here you can add your login logic (e.g., API call)
+            } else {
+                this.formError = 'Please fix the errors above.';
+            }
         },
     },
 };

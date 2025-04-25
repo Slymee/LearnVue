@@ -4,6 +4,7 @@
         <input :type="type" :name="name" :value="modelValue" @input="updateValue($event.target.value)"
             :placeholder="placeholder"
             class="block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#725AC1] focus:border-[#725AC1] transition duration-200" />
+            <div v-if="error" class="text-red-500 text-sm mt-1">{{ error }}</div>
     </div>
 </template>
 
@@ -27,6 +28,10 @@ export default {
             default: '',
         },
         modelValue: {
+            type: String,
+            default: '',
+        },
+        error: {
             type: String,
             default: '',
         },
