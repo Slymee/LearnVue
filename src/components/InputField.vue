@@ -1,10 +1,10 @@
 <template>
     <div class="mb-4">
-        <label :for="name" class="block text-sm font-medium text-[#725AC1] mb-1">{{ label }}</label>
-        <input :type="type" :name="name" :value="modelValue" @input="updateValue($event.target.value)"
+        <label :for="name" class="block text-sm font-medium text-gray-700 mb-1">{{ label }}</label>
+        <input :type="type" :name="name" :id="name" :value="modelValue" @input="updateValue($event.target.value)"
             :placeholder="placeholder"
             class="block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#725AC1] focus:border-[#725AC1] transition duration-200" />
-            <div v-if="error" class="text-red-500 text-sm mt-1">{{ error }}</div>
+        <div v-if="error" class="text-red-500 text-sm mt-1">{{ error }}</div>
     </div>
 </template>
 
