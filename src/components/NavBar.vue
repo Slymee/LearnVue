@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex justify-between items-center p-4 bg-gray-100">
+    <nav class="flex justify-between items-center p-4 bg-gray-100 sticky top-0 transition-opacity duration-300" :style="{ opacity: navbarOpacity }">
         <div class="text-lg font-bold">Logo</div>
         <div>
             <ul class="flex space-x-4">
@@ -12,5 +12,23 @@
 </template>
 
 <script>
-
+export default {
+    data() {
+        return {
+            navbarOpacity: 1, // Start with full opacity
+        };
+    },
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        handleScroll() {
+            // Check if the user has scrolled down
+            this.navbarOpacity = window.scrollY > 0 ? 0.75 : 1; // Set opacity to 0.75 if scrolled down, otherwise 1
+        },
+    },
+};
 </script>
